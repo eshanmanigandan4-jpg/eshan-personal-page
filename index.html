@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eshan Command Center</title>
+<style>
+body{margin:0;background:#000;color:#fff;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+header{padding:20px;text-align:center;font-size:28px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;padding:15px}
+.card{background:#111;border-radius:18px;padding:15px}
+h2{margin-top:0}
+textarea,input{width:100%;background:#1c1c1c;color:white;border:none;border-radius:10px;padding:10px;box-sizing:border-box}
+.progress{height:12px;background:#222;border-radius:20px;overflow:hidden}
+.bar{height:100%;background:#35d07f;width:0%}
+button{background:#35d07f;border:none;padding:10px 14px;border-radius:10px;font-weight:bold}
+.small{font-size:14px;color:#bbb}
+</style>
+</head>
+<body>
+<header>⚡ ESHAN COMMAND CENTER</header>
+
+<div class="grid">
+<div class="card">
+<h2>🏏 Cricket</h2>
+<textarea placeholder="Today's cricket training"></textarea>
+</div>
+
+<div class="card">
+<h2>💪 Workout</h2>
+<label><input type="checkbox"> Upper Body</label><br>
+<label><input type="checkbox"> Core</label><br>
+<label><input type="checkbox"> Stretching</label>
+</div>
+
+<div class="card">
+<h2>🍽 Diet</h2>
+<textarea placeholder="Meals, calories, protein"></textarea>
+</div>
+
+<div class="card">
+<h2>📚 Study Plan</h2>
+<textarea placeholder="Today's study tasks"></textarea>
+</div>
+
+<div class="card">
+<h2>⚖️ Weight Tracker</h2>
+<input placeholder="Current weight (kg)">
+</div>
+
+<div class="card">
+<h2>🎯 Goals</h2>
+<textarea placeholder="Bowling speed, physique, studies"></textarea>
+</div>
+
+<div class="card">
+<h2>⏱ Focus Timer</h2>
+<p id="timer">25:00</p>
+<button onclick="startTimer()">Start</button>
+</div>
+
+<div class="card">
+<h2>🔥 Daily Progress</h2>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<p id="percent">0%</p>
+<button onclick="updateProgress()">Update</button>
+</div>
+
+<div class="card">
+<h2>📝 Notes</h2>
+<textarea placeholder="Anything important"></textarea>
+</div>
+</div>
+
+<script>
+function startTimer(){
+ let t=1500;
+ const el=document.getElementById('timer');
+ const x=setInterval(()=>{
+   t--;
+   let m=Math.floor(t/60);
+   let s=t%60;
+   el.textContent=`${m}:${String(s).padStart(2,'0')}`;
+   if(t<=0) clearInterval(x);
+ },1000);
+}
+function updateProgress(){
+ const v=Math.min(100,Math.floor(Math.random()*101));
+ document.getElementById('bar').style.width=v+'%';
+ document.getElementById('percent').textContent=v+'%';
+}
+</script>
+</body>
+</html>
